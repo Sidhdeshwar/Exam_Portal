@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="row">
+      <h1>My Interview Portal</h1>
+      <hr>
+      <div class="col-md-12">
+          <table class="table table-striped border">
+              <thead>
+                  <tr>
+                      <th>Test</th>
+                      <th>No of Questions</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody *ngFor="let obj of testList">
+                  <tr>
+                      <td>{{obj?.name}}</td>
+                      <td>{{obj?.questions?.length}}</td>
+                      <td><a class="btn btn-warning" (click)="startTest(obj)">Start Test</a></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+<!-- /.container -->

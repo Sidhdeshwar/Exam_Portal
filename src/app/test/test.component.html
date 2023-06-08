@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+  <h1>My Interview Portal</h1>
+      <hr>
+      <div class="col-md-12">
+          <div class="panel panel-default">
+              <div class="panel-heading">{{ProgrammingLanguge.name}}  </div>
+              <div class="panel-body">
+
+                  <div *ngIf="ProgrammingLanguge.questions[cnt]?.type=='Multiple-Response' ; else showElase">
+                  <!-- *IF -->
+                      <label>{{cnt+1}} ] {{ProgrammingLanguge.questions[cnt].questionText}}</label>
+                      <div class="radio" *ngFor="let obj of ProgrammingLanguge.questions[cnt].options ; let i=index">
+                          <label>
+                              <input type="checkbox" name="option" value="option1" (change)="assignAnswer(i)" > {{obj}}
+                          </label>
+                      </div>
+                  </div>
+                  <!-- *Else -->
+                  <ng-template #showElase>
+                    {{cnt+1}} ] <label>{{ProgrammingLanguge.questions[cnt].questionText}}</label>
+                    <div class="radio" *ngFor="let obj of ProgrammingLanguge.questions[cnt].options ; let i=index">
+                        <label>
+                            <input type="radio" name="option" value="option1"  (change)="assignAnswer(i)"> {{obj}}
+                        </label>
+                    </div>
+                  </ng-template>
+              </div>
+              <div class="panel-footer">
+                  <button  class="btn btn-success" [disabled]="cnt+1>=ProgrammingLanguge.questions.length || answerArray[cnt]==undefined" (click)="nextQue()">Next</button>
+
+                  <button class="pull-right btn btn-danger" [disabled]="cnt+1<ProgrammingLanguge.questions.length" (click)="finish()">Finish</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- /.container -->
